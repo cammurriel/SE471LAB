@@ -1,36 +1,48 @@
 package LineDrawing;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import static java.awt.BorderLayout.*;
 
 public class LineDrawingTest {
 
 
-
     public static void main(String[] args) {
-        JButton button = new JButton("hello");
-        button.addActionListener(new ButtonAction());
-        button.setBounds(100,0,100,50);
 
-        //LinePanelButton b = new LinePanelButton();
-        JFrame application = new JFrame();
+
         LiningPanel panel = new LiningPanel();
+        RunnableThread run = new RunnableThread(panel);
+        buttonMaker button = new buttonMaker(run);
+        button.getMainButton();
+
+        JFrame application = new JFrame();
+        JPanel buttonPanel = new JPanel();
+        JPanel drawPanel = new JPanel();
+
+
+
+
+        Thread thread = new Thread(run);
+
+
+        buttonPanel.setLayout(new BorderLayout());
+        buttonPanel.add(button.getMainButton());
+        application.getContentPane().add(buttonPanel, "North");   //puts button panel to top of JFrame
+
+        drawPanel.setLayout(new BorderLayout());
+        drawPanel.add(panel);
+
+        application.getContentPane().add(drawPanel);
         application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        application.add(panel);
+
         application.setSize(300, 300);
         application.setTitle("Lining Art");
         application.setVisible(true);
-        panel.add(button);
+
+
+
+      thread.start();
+
     }
 
 }
 
-
-/*
-//RunnableThread run = new RunnableThread();
-        // Thread thread = new Thread(run);
-        //thread.start();
- */

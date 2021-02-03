@@ -1,20 +1,46 @@
 package LineDrawing;
 
-public class RunnableThread implements Runnable{
-    private LiningPanel panel;
-    private boolean stopped = false;
+public class RunnableThread implements Runnable {
+    private  LiningPanel panel;
+    private static boolean stopped = false;
+
+    public RunnableThread(LiningPanel panel1) {
+        panel = panel1;
+    }
 
 
     @Override
     public void run() {
-        for (int i = 0; i < 5; i++) {
-            System.out.println("hello");
+
+
+        while (true) {
+            if (!isStopped()) {
+                panel.repaint();
+                panel.counter();
+
+            }
             try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.sleep(300);
+            } catch (Exception e) {
             }
         }
+
     }
+
+    public void setPanel(LiningPanel panel) {
+        this.panel = panel;
     }
+
+
+    public static boolean isStopped() {
+        return stopped;
+    }
+
+
+    public void setStopped(boolean stopped) {
+        RunnableThread.stopped = stopped;
+    }
+
+}
+
 

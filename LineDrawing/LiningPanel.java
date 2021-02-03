@@ -6,41 +6,58 @@ import java.awt.Graphics;
 public class LiningPanel extends javax.swing.JPanel {
 
     Random rand = new Random();
+    double lines = 15.0;
+    int count = 1;
 
     public LiningPanel() {
 
     }
 
         public Color random_color(){
-            float r = rand.nextFloat();
+            //Color randomColor = rand.nextInt(256*256*256);
+            /*float r = rand.nextFloat();
             float g = rand.nextFloat();
             float b = rand.nextFloat();
             Color randomColor = new Color(r, g, b);
+             */
+            Color randomColor = new Color(rand.nextInt(256*256*256)); //rgb format
             return randomColor;
         }
+
+   public void counter(){
+
+        if (count > lines){
+            count = 1;
+        }
+
+       count++;
+    }
+
+
+
+
         public void paintComponent (Graphics g)
     {
         super.paintComponent(g);
         int w = getWidth();
         int h = getHeight();
-        
-        double lines = 15.0;
 
-        for(int i = 0; i < lines; i++)
-        {
-
-            int w2 = (int)((i/lines)*w);
-            int h2 = (int)((i/lines)*h);
-            g.setColor(random_color());
-            g.drawLine(0,  h2, w2, h);
+        for(int i = 0; i < count; i++) {
+            int w2 = (int) ((i / lines) * w);
+            int h2 = (int) ((i / lines) * h);
 
             g.setColor(random_color());
-            g.drawLine(w,h2,w-w2,h);
+            g.drawLine(w - w2, 0, 0, h2);
             g.setColor(random_color());
-            g.drawLine(w,h-h2,w-w2,0);
+            g.drawLine(0, h2, w2, h);
             g.setColor(random_color());
-            g.drawLine(0,h-h2,w2,0);
+            g.drawLine(w2, h, w, h - h2);
+            g.setColor(random_color());
+            g.drawLine(w, h - h2, w - w2, 0);
+
         }
+
+
         
     }
     
