@@ -1,4 +1,4 @@
-package LineDrawing;
+package Lab0Code;
 
 public class RunnableThread implements Runnable {
     private  LiningPanel panel;
@@ -27,9 +27,11 @@ public class RunnableThread implements Runnable {
 
     }
 
-    public void setPanel(LiningPanel panel) {
+    /*public void setPanel(LiningPanel panel) {
         this.panel = panel;
     }
+
+     */
 
 
     public static boolean isStopped() {

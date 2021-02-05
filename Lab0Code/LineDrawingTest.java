@@ -1,4 +1,4 @@
-package LineDrawing;
+package Lab0Code;
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,17 +11,13 @@ public class LineDrawingTest {
 
         LiningPanel panel = new LiningPanel();
         RunnableThread run = new RunnableThread(panel);
+        Thread thread = new Thread(run);
         buttonMaker button = new buttonMaker(run);
         button.getMainButton();
 
         JFrame application = new JFrame();
         JPanel buttonPanel = new JPanel();
         JPanel drawPanel = new JPanel();
-
-
-
-
-        Thread thread = new Thread(run);
 
 
         buttonPanel.setLayout(new BorderLayout());
@@ -33,11 +29,9 @@ public class LineDrawingTest {
 
         application.getContentPane().add(drawPanel);
         application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         application.setSize(300, 300);
         application.setTitle("Lining Art");
         application.setVisible(true);
-
 
 
       thread.start();

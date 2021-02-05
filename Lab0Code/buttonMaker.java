@@ -1,4 +1,4 @@
-package LineDrawing;
+package Lab0Code;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,4 +1,4 @@
-package LineDrawing;
+package Lab0Code;
 import java.util.Random;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,12 +14,6 @@ public class LiningPanel extends javax.swing.JPanel {
     }
 
         public Color random_color(){
-            //Color randomColor = rand.nextInt(256*256*256);
-            /*float r = rand.nextFloat();
-            float g = rand.nextFloat();
-            float b = rand.nextFloat();
-            Color randomColor = new Color(r, g, b);
-             */
             Color randomColor = new Color(rand.nextInt(256*256*256)); //rgb format
             return randomColor;
         }
@@ -62,3 +56,9 @@ public class LiningPanel extends javax.swing.JPanel {
     }
     
 }
+//Color randomColor = rand.nextInt(256*256*256);
+            /*float r = rand.nextFloat();
+            float g = rand.nextFloat();
+            float b = rand.nextFloat();
+            Color randomColor = new Color(r, g, b);
+             */
